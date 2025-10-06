@@ -6,12 +6,26 @@
     <title>Solar System</title>
     <meta name="description" content="Solar System - A-Frame" />
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <a-scene>
-      <a-sky src="textures/nightsky.jpg"></a-sky>
-      <a-camera position="20 0 30" look-controls wasd-controls></a-camera>
+      <!-- SPACE BACKGROUND -->
+      <a-sky src="textures/realistic_nightsky.png"></a-sky>
 
+      <!-- CAMERA POSITION -->
+      <a-entity id="rig" position="40 50 30" rotation="-90 50 0">
+        <a-camera
+          id="camera"
+          wasd-controls
+          look-controls
+        ></a-camera>
+      </a-entity>
+
+      <!-- AMBIENT LIGHT -->
+      <a-entity light="type: ambient; color: #fff; intensity: 5;"></a-entity>
+
+      <!-- SUN -->
       <a-sphere
         id="sun"
         src="textures/sun.jpeg"
@@ -19,115 +33,195 @@
         radius="3"
         rotation="0 0 0"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 10000;
-                           easing: linear;"
+           to: 0 360 0;
+           loop: true;
+           dur: 10000;
+           easing: linear;"
       ></a-sphere>
 
-      <a-sphere
-        id="mercury"
-        src="textures/mercury.jpeg"
-        position="10 1.25 -5"
-        radius="0.5"
-        rotation="0 0 0"
+      <!-- MERCURY -->
+      <a-entity
+        id="mercury-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 60000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 5000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="mercury"
+          src="textures/mercury.jpeg"
+          position="10 0 0"
+          radius="0.5"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 60000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="venus"
-        src="textures/venus.jpeg"
-        position="15 1.25 -5"
-        radius="1"
-        rotation="0 0 0"
+      <!-- VENUS -->
+      <a-entity
+        id="venus-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 60000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 7000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="venus"
+          src="textures/venus.jpeg"
+          position="15 0 0"
+          radius="1"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 60000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="earth"
-        src="textures/earth.jpeg"
-        position="20 1.25 -5"
-        radius="1.50"
-        rotation="0 0 0"
+      <!-- EARTH -->
+      <a-entity
+        id="earth-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 5000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 10000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="earth"
+          src="textures/earth.jpeg"
+          position="20 0 0"
+          radius="1.5"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 5000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="mars"
-        src="textures/mars.jpeg"
-        position="25 1.25 -5"
-        radius="1"
-        rotation="0 0 0"
+      <!-- MARS -->
+      <a-entity
+        id="mars-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 10000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 15000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="mars"
+          src="textures/mars.jpeg"
+          position="25 0 0"
+          radius="1"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 10000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="jupiter"
-        src="textures/jupiter.jpeg"
-        position="35 1.25 -5"
-        radius="3"
-        rotation="0 0 0"
+      <!-- JUPITER -->
+      <a-entity
+        id="jupiter-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 5000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 20000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="jupiter"
+          src="textures/jupiter.jpeg"
+          position="35 0 0"
+          radius="3"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 5000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="saturn"
-        src="textures/saturn.jpeg"
-        position="47 1.25 -5"
-        radius="2"
-        rotation="0 0 0"
+      <!-- SATURN -->
+      <a-entity
+        id="saturn-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 5000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 25000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="saturn"
+          src="textures/saturn.jpeg"
+          position="47 0 0"
+          radius="2"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 5000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="uranus"
-        src="textures/uranus.jpeg"
-        position="55 1.25 -5"
-        radius="1"
-        rotation="0 0 0"
+      <!-- URANUS -->
+      <a-entity
+        id="uranus-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 20000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 30000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="uranus"
+          src="textures/uranus.jpeg"
+          position="55 0 0"
+          radius="1"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 20000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
 
-      <a-sphere
-        id="neptune"
-        src="textures/neptune.jpeg"
-        position="60 1.25 -5"
-        radius="1"
-        rotation="0 0 0"
+      <!-- NEPTUNE -->
+      <a-entity
+        id="neptune-orbit"
         animation="property: rotation;
-                           to: 0 360 0;
-                           loop: true;
-                           dur: 20000;
-                           easing: linear;"
-      ></a-sphere>
+           to: 0 360 0;
+           loop: true;
+           dur: 35000;
+           easing: linear;"
+      >
+        <a-sphere
+          id="neptune"
+          src="textures/neptune.jpeg"
+          position="60 0 0"
+          radius="1"
+          rotation="0 0 0"
+          animation="property: rotation;
+             to: 0 360 0;
+             loop: true;
+             dur: 20000;
+             easing: linear;"
+        ></a-sphere>
+      </a-entity>
     </a-scene>
   </body>
 </html>
