@@ -1,6 +1,15 @@
 {
   "dependencies": {
     "aframe": "^1.7.1",
+    "aframe-html-shader": "github:jolsefu/aframe-html-shader-patch",
     "aframe-watcher": "^1.4.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.9"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }
