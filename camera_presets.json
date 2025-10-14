@@ -1,0 +1,26 @@
+{
+    "default": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    },
+    "side-view": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 95
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    }
+}
