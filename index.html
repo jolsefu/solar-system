@@ -5,7 +5,18 @@
     <meta charset="utf-8" />
     <title>Solar System</title>
     <meta name="description" content="Solar System - A-Frame" />
+
+    <!-- NES.css -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <!-- Main Javascript Code -->
     <script src="main.js"></script>
   </head>
   <body>
@@ -14,13 +25,14 @@
       <a-sky src="textures/realistic_nightsky.png"></a-sky>
 
       <!-- CAMERA POSITION -->
-      <a-entity id="rig" position="40 50 30" rotation="-90 50 0">
+      <!-- <a-entity id="rig" position="40 50 -50" rotation="-90 50 0"> -->
         <a-camera
           id="camera"
+          position="0 0 0"
           wasd-controls
           look-controls
         ></a-camera>
-      </a-entity>
+      <!-- </a-entity> -->
 
       <!-- AMBIENT LIGHT -->
       <a-entity light="type: ambient; color: #fff; intensity: 5;"></a-entity>
