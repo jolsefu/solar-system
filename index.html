@@ -19,46 +19,46 @@
       rel="stylesheet"
     />
 
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="/src/styles/main.css">
+
     <!-- Main Javascript Code (bundled by Vite) -->
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/camera.js"></script>
   </head>
   <body>
-    <div
-      style="
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: -1;
-        overflow: hidden;
-      "
-    >
-      <div
-        id="htmlElement"
-        style="background: #f8f8f8; color: #333; font-size: 100px"
-      >
-        <button onclick="alert('Hello, there')">Click me!</button>
-      </div>
+
+    <div class="ui nes-container is-rounded is-dark main-menu">
+        <p>Welcome to a rendition of the Solar System using A-Frame.</p>
+
+        <!-- SPACING -->
+        <div style="height: 1em;"></div>
+
+        <a id="start-btn" class="nes-btn is-success" href="#">Click here to start.</a>
+
+        <!-- SPACING -->
+        <div style="height: 3em;"></div>
+
+        <p>© Jules Leo Reserva</p>
     </div>
 
     <a-scene>
-      <a-entity
+      <!-- <a-entity
         id="main-ui"
         position="0 0 90"
         geometry="primitive: plane;"
         material="shader: html; target: #htmlElement; transparent: true; opacity: 0.5;"
         clickable
-      ></a-entity>
+      ></a-entity> -->
 
       <!-- SPACE BACKGROUND -->
-      <a-sky src="textures/realistic_nightsky.png"></a-sky>
+      <a-sky src="src/textures/realistic_nightsky.png"></a-sky>
 
       <!-- CAMERA POSITION -->
       <!-- <a-entity id="rig" position="40 50 -50" rotation="-90 50 0"> -->
       <a-camera
         id="camera"
-        position="0 0 95"
+        position="0 0 0"
         wasd-controls
         look-controls
       >
@@ -72,7 +72,7 @@
       <!-- SUN -->
       <a-sphere
         id="sun"
-        src="textures/sun.jpeg"
+        src="src/textures/sun.jpeg"
         position="0 1.25 -5"
         radius="3"
         rotation="0 0 0"
@@ -94,7 +94,7 @@
       >
         <a-sphere
           id="mercury"
-          src="textures/mercury.jpeg"
+          src="src/textures/mercury.jpeg"
           position="10 0 0"
           radius="0.5"
           rotation="0 0 0"
@@ -117,7 +117,7 @@
       >
         <a-sphere
           id="venus"
-          src="textures/venus.jpeg"
+          src="src/textures/venus.jpeg"
           position="15 0 0"
           radius="1"
           rotation="0 0 0"
@@ -140,7 +140,7 @@
       >
         <a-sphere
           id="earth"
-          src="textures/earth.jpeg"
+          src="src/textures/earth.jpeg"
           position="20 0 0"
           radius="1.5"
           rotation="0 0 0"
@@ -163,7 +163,7 @@
       >
         <a-sphere
           id="mars"
-          src="textures/mars.jpeg"
+          src="src/textures/mars.jpeg"
           position="25 0 0"
           radius="1"
           rotation="0 0 0"
@@ -186,7 +186,7 @@
       >
         <a-sphere
           id="jupiter"
-          src="textures/jupiter.jpeg"
+          src="src/textures/jupiter.jpeg"
           position="35 0 0"
           radius="3"
           rotation="0 0 0"
@@ -209,7 +209,7 @@
       >
         <a-sphere
           id="saturn"
-          src="textures/saturn.jpeg"
+          src="src/textures/saturn.jpeg"
           position="47 0 0"
           radius="2"
           rotation="0 0 0"
@@ -232,7 +232,7 @@
       >
         <a-sphere
           id="uranus"
-          src="textures/uranus.jpeg"
+          src="src/textures/uranus.jpeg"
           position="55 0 0"
           radius="1"
           rotation="0 0 0"
@@ -255,7 +255,7 @@
       >
         <a-sphere
           id="neptune"
-          src="textures/neptune.jpeg"
+          src="src/textures/neptune.jpeg"
           position="60 0 0"
           radius="1"
           rotation="0 0 0"
