@@ -1,26 +1,35 @@
 {
-    "default": {
-        "position": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-        },
-        "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-        }
+  "default": {
+    "position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
     },
-    "sideview": {
-        "position": {
-            "x": 0,
-            "y": 0,
-            "z": 95
-        },
-        "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-        }
+    "rotation": {
+      "pitch": 0,
+      "yaw": 0
     }
+  },
+  "sideview": {
+    "position": {
+      "x": 0,
+      "y": 0,
+      "z": 95
+    },
+    "rotation": {
+      "pitch": 0,
+      "yaw": 0
+    }
+  },
+  "birdview": {
+    "position": {
+      "x": 0,
+      "y": 20,
+      "z": 0
+    },
+    "rotation": {
+      "pitch": 0,
+      "yaw": 0
+    }
+  }
 }

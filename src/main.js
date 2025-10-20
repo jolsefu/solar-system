@@ -1,9 +1,15 @@
 import "aframe";
-import "aframe-html-shader";
 
 import * as view from "./view.js";
 
-document.addEventListener("DOMContentLoaded", addListeners);
+document.addEventListener("DOMContentLoaded", start);
+
+
+
+function start() {
+  // For camera animations
+  addListeners();
+}
 
 AFRAME.registerComponent("clickable", {
   init: function () {
@@ -15,9 +21,8 @@ AFRAME.registerComponent("clickable", {
 
 function addListeners() {
   document.querySelector("#start-btn").onclick = () => {
-
     document.querySelector(".main-menu").style.display = "none";
 
     view.animateCameraToStart();
-  }
+  };
 }

@@ -7,7 +7,10 @@
     <meta name="description" content="Solar System - A-Frame" />
 
     <!-- NES.css -->
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/nes.css@latest/css/nes.min.css"
+      rel="stylesheet"
+    />
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,40 +20,37 @@
     />
 
     <!-- Main CSS Files -->
-    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/main.css" />
 
     <!-- Main Javascript Code (bundled by Vite) -->
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/camera.js"></script>
+    <script type="module" src="/src/view.js"></script>
   </head>
   <body>
-
     <div class="ui nes-container is-rounded is-dark main-menu">
         <p>Welcome to a rendition of the Solar System using A-Frame.</p>
 
-        <!-- SPACING -->
         <div style="height: 1em;"></div>
 
         <a id="start-btn" class="nes-btn is-success" href="#">Click here to start.</a>
 
-        <!-- SPACING -->
         <div style="height: 3em;"></div>
 
         <p>© Jules Leo Reserva</p>
     </div>
 
     <div class="sidebar ui nes-container is-rounded is-dark">
-        <p>Welcome to a rendition of the Solar System using A-Frame.</p>
+      <p>Welcome to a rendition of the Solar System using A-Frame.</p>
 
-        <!-- SPACING -->
-        <div style="height: 1em;"></div>
+      <div style="height: 1em"></div>
 
-        <a id="start-btn" class="nes-btn is-success" href="#">Click here to start.</a>
+      <a id="start-btn" class="nes-btn is-success" href="#"
+        >Click here to start.</a
+      >
 
-        <!-- SPACING -->
-        <div style="height: 3em;"></div>
+      <div style="height: 3em"></div>
 
-        <p>© Jules Leo Reserva</p>
+      <p>© Jules Leo Reserva</p>
     </div>
 
     <a-scene>
@@ -67,14 +67,14 @@
 
       <!-- CAMERA POSITION -->
       <!-- <a-entity id="rig" position="40 50 -50" rotation="-90 50 0"> -->
-      <a-camera
-        id="camera"
-        position="0 0 0"
-        wasd-controls
-        look-controls
-      >
-        <a-cursor></a-cursor>
-      </a-camera>
+      <a-entity id="rig" position="0 0 0">
+        <a-camera
+          id="camera"
+          wasd-controls
+        >
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
       <!-- </a-entity> -->
 
       <!-- AMBIENT LIGHT -->
