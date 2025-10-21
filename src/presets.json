@@ -21,14 +21,14 @@
       "yaw": 0
     }
   },
-  "birdview": {
+  "topview": {
     "position": {
       "x": 0,
-      "y": 20,
+      "y": 70,
       "z": 0
     },
     "rotation": {
-      "pitch": 0,
+      "pitch": -90,
       "yaw": 0
     }
   }

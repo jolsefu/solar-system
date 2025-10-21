@@ -54,10 +54,14 @@ function animateCamera(camera, preset) {
   });
 }
 
-export function animateCameraToStart() {
+export function animateCameraToDefault() {
+  animateCamera(camera, presets.default);
+}
+
+export function animateCameraToSideView() {
   animateCamera(camera, presets.sideview);
 }
 
-export function animateCameraToBirdView() {
-  animateCamera(camera, presets.birdview);
+export function animateCameraToTopView() {
+  animateCamera(camera, presets.topview);
 }

@@ -17,9 +17,19 @@ function start() {
 
 
   addListeners();
+  addCameraListeners();
+  addPlanetListeners();
 }
 
 function addListeners() {
+  /**
+   *
+   * Listeners for each main UI menu buttons.
+   *
+   */
+
+
+  // Start button
   const start_btn = document.querySelector("#start-btn");
   start_btn.addEventListener("click", beginDefaultState);
 
@@ -31,7 +41,25 @@ function addListeners() {
     sidebar.classList.toggle("open");
     sidebarToggle.classList.toggle("sidebar-open");
   });
+}
 
+function addCameraListeners() {
+  document.querySelectorAll(".view-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const viewName = btn.dataset.view;
+
+      if (viewName === "default") {
+        view.animateCameraToDefault();
+      } else if (viewName === "sideview") {
+        view.animateCameraToSideView();
+      } else if (viewName === "topview") {
+        view.animateCameraToTopView();
+      }
+    });
+  });
+}
+
+function addPlanetListeners() {
   // Planets dropdown
   const planetsBtn = document.querySelector("#planets-dropdown-btn");
   const planetsDropdown = document.querySelector("#planets-dropdown");
@@ -54,15 +82,6 @@ function addListeners() {
       const planet = btn.dataset.planet;
       console.log(`Navigate to planet: ${planet}`);
       // TODO: Add planet navigation logic here
-    });
-  });
-
-  // View button handlers
-  document.querySelectorAll(".view-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const viewName = btn.dataset.view;
-      console.log(`Switch to view: ${viewName}`);
-      // TODO: Add view switching logic here
     });
   });
 }
@@ -92,8 +111,6 @@ function beginDefaultState() {
 
   sidebarToggle.style.display = "flex";
   sidebarToggle.classList.toggle("sidebar-open");
-
-  view.animateCameraToStart();
 }
 
 
