@@ -1,28 +1,107 @@
 import "aframe";
-
 import * as view from "./view.js";
+
+
 
 document.addEventListener("DOMContentLoaded", start);
 
 
 
 function start() {
-  // For camera animations
+  /*
+   *
+   * Code to run after DOM has been loaded.
+   * - addListeners(): Add listeners for each button of the UI.
+   *
+   */
+
+
   addListeners();
 }
 
-AFRAME.registerComponent("clickable", {
-  init: function () {
-    this.el.addEventListener("click", function (event) {
-      console.log("Entity clicked!", event.target);
-    });
-  },
-});
-
 function addListeners() {
-  document.querySelector("#start-btn").onclick = () => {
-    document.querySelector(".main-menu").style.display = "none";
+  const start_btn = document.querySelector("#start-btn");
+  start_btn.addEventListener("click", beginDefaultState);
 
-    view.animateCameraToStart();
-  };
+  // Sidebar toggle
+  const sidebar = document.querySelector("#sidebar");
+  const sidebarToggle = document.querySelector("#sidebar-toggle");
+
+  sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    sidebarToggle.classList.toggle("sidebar-open");
+  });
+
+  // Planets dropdown
+  const planetsBtn = document.querySelector("#planets-dropdown-btn");
+  const planetsDropdown = document.querySelector("#planets-dropdown");
+
+  planetsBtn.addEventListener("click", () => {
+    planetsDropdown.classList.toggle("open");
+  });
+
+  // Views dropdown
+  const viewsBtn = document.querySelector("#views-dropdown-btn");
+  const viewsDropdown = document.querySelector("#views-dropdown");
+
+  viewsBtn.addEventListener("click", () => {
+    viewsDropdown.classList.toggle("open");
+  });
+
+  // Planet button handlers
+  document.querySelectorAll(".planet-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const planet = btn.dataset.planet;
+      console.log(`Navigate to planet: ${planet}`);
+      // TODO: Add planet navigation logic here
+    });
+  });
+
+  // View button handlers
+  document.querySelectorAll(".view-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const viewName = btn.dataset.view;
+      console.log(`Switch to view: ${viewName}`);
+      // TODO: Add view switching logic here
+    });
+  });
 }
+
+/*
+ *
+ * Main UI Functions
+ *
+ */
+
+function beginDefaultState() {
+  /*
+   *
+   * Enable the start of the program.
+   * - Go to default camera view.
+   * - Hide main menu and show sidebar.
+   *
+   */
+
+
+  const main_menu = document.querySelector(".main-menu");
+  const sidebar = document.querySelector("#sidebar");
+  const sidebarToggle = document.querySelector("#sidebar-toggle");
+
+  main_menu.style.display = "none";
+  sidebar.classList.toggle("open");
+
+  sidebarToggle.style.display = "flex";
+  sidebarToggle.classList.toggle("sidebar-open");
+
+  view.animateCameraToStart();
+}
+
+
+// Make a planet clickable
+// AFRAME.registerComponent("clickable", {
+//   init: function () {
+//     this.el.addEventListener("click", function (event) {
+//       console.log("Entity clicked!", event.target);
+//     });
+//   },
+// });

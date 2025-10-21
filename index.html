@@ -21,6 +21,7 @@
 
     <!-- Main CSS Files -->
     <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/sidebar.css" />
 
     <!-- Main Javascript Code (bundled by Vite) -->
     <script type="module" src="/src/main.js"></script>
@@ -39,18 +40,47 @@
         <p>© Jules Leo Reserva</p>
     </div>
 
-    <div class="sidebar ui nes-container is-rounded is-dark">
-      <p>Welcome to a rendition of the Solar System using A-Frame.</p>
+    <!-- Sidebar Toggle Button -->
+    <button id="sidebar-toggle" class="nes-btn is-primary sidebar-toggle">
+      ☰
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar nes-container is-rounded is-dark">
+      <h3 class="sidebar-title">Controls</h3>
 
       <div style="height: 1em"></div>
 
-      <a id="start-btn" class="nes-btn is-success" href="#"
-        >Click here to start.</a
-      >
+      <!-- Planets Dropdown -->
+      <div class="dropdown-section">
+        <button class="nes-btn dropdown-btn" id="planets-dropdown-btn">
+          Planets ▼
+        </button>
+        <div class="dropdown-content" id="planets-dropdown">
+          <button class="nes-btn is-warning planet-btn" data-planet="mercury">Mercury</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="venus">Venus</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="earth">Earth</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="mars">Mars</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="jupiter">Jupiter</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="saturn">Saturn</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="uranus">Uranus</button>
+          <button class="nes-btn is-warning planet-btn" data-planet="neptune">Neptune</button>
+        </div>
+      </div>
 
-      <div style="height: 3em"></div>
+      <div style="height: 1em"></div>
 
-      <p>© Jules Leo Reserva</p>
+      <!-- Camera Views Dropdown -->
+      <div class="dropdown-section">
+        <button class="nes-btn dropdown-btn" id="views-dropdown-btn">
+          Camera Views ▼
+        </button>
+        <div class="dropdown-content" id="views-dropdown">
+          <button class="nes-btn is-success view-btn" data-view="sideview">Side View</button>
+          <button class="nes-btn is-success view-btn" data-view="topview">Top View</button>
+          <button class="nes-btn is-success view-btn" data-view="closeup">Close Up</button>
+        </div>
+      </div>
     </div>
 
     <a-scene>

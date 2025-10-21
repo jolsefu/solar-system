@@ -1,0 +1,84 @@
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    padding: 10px 15px !important;
+    cursor: pointer;
+    transition: right 0.3s ease;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.5em;
+    line-height: 1 !important;
+    min-width: 50px;
+    height: 50px;
+}
+
+.sidebar-toggle.sidebar-open {
+  right: 450px;
+}
+
+.sidebar {
+  position: fixed !important;
+  top: 20px !important;
+  right: -400px;
+  left: auto !important;
+  transform: none !important;
+  width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 9999;
+  padding: 20px;
+  line-height: 1.6;
+  text-align: left;
+  transition: right 0.3s ease;
+}
+
+.sidebar.open {
+  right: 20px !important;
+}
+
+.sidebar-title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.sidebar-footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dropdown-section {
+  margin-bottom: 10px;
+}
+
+.dropdown-btn {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.dropdown-content.open {
+  display: flex;
+}
+
+.dropdown-content button {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85em;
+  padding: 8px;
+}
