@@ -6,6 +6,8 @@ const cameraEl = document.querySelector("#camera");
 const camera = cameraEl.object3D;
 
 
+// cameraEl.setAttribute('look-controls', {enabled: false});
+
 
 function animateCamera(camera, preset) {
   /**
@@ -64,4 +66,73 @@ export function animateCameraToSideView() {
 
 export function animateCameraToTopView() {
   animateCamera(camera, presets.topview);
+}
+
+let trackingPlanet = null;
+let trackingAnimation = null;
+
+export function trackPlanet(planetId) {
+  /**
+   *
+   * Track planet by using GSAP's ticker
+   *
+   */
+
+
+  // Stop any existing tracking
+  if (trackingAnimation) {
+    gsap.ticker.remove(trackingAnimation);
+    trackingAnimation = null;
+  }
+
+  const planetEl = document.querySelector(`#${planetId}`);
+  if (!planetEl) {
+    console.error(`Planet ${planetId} not found`);
+    return;
+  }
+
+  trackingPlanet = planetEl.object3D;
+
+  // Function to update camera position to follow planet
+  function updateCameraTracking() {
+    if (!trackingPlanet) return;
+
+    const planetPos = new THREE.Vector3();
+    trackingPlanet.getWorldPosition(planetPos);
+
+    // Calculate offset for camera (distance from planet)
+    const cameraPos = new THREE.Vector3(
+      planetPos.x,
+      planetPos.y + 20,
+      planetPos.z
+    );
+
+    // Animate camera to new position
+    gsap.to(camera.position, {
+      x: cameraPos.x,
+      y: cameraPos.y,
+      z: cameraPos.z,
+      duration: 0.1,
+      ease: "none",
+    });
+
+    const pitch = -90;
+    gsap.to(cameraEl.components["look-controls"].pitchObject.rotation, {
+      x: (Math.PI / 180) * pitch,
+      duration: 0.1,
+      ease: "none",
+    });
+  }
+
+  // Use GSAP ticker to update every frame
+  trackingAnimation = gsap.ticker.add(updateCameraTracking);
+}
+
+export function stopTrackingPlanet() {
+  if (trackingAnimation) {
+    gsap.ticker.remove(trackingAnimation);
+    trackingAnimation = null;
+  }
+
+  trackingPlanet = null;
 }

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", start);
 
 
 function start() {
-  /*
+  /**
    *
    * Code to run after DOM has been loaded.
    * - addListeners(): Add listeners for each button of the UI.
@@ -48,6 +48,8 @@ function addCameraListeners() {
     btn.addEventListener("click", () => {
       const viewName = btn.dataset.view;
 
+      view.stopTrackingPlanet();
+
       if (viewName === "default") {
         view.animateCameraToDefault();
       } else if (viewName === "sideview") {
@@ -81,19 +83,21 @@ function addPlanetListeners() {
     btn.addEventListener("click", () => {
       const planet = btn.dataset.planet;
       console.log(`Navigate to planet: ${planet}`);
-      // TODO: Add planet navigation logic here
+
+      // Start tracking the selected planet
+      view.trackPlanet(planet);
     });
   });
 }
 
-/*
+/**
  *
  * Main UI Functions
  *
  */
 
 function beginDefaultState() {
-  /*
+  /**
    *
    * Enable the start of the program.
    * - Go to default camera view.
