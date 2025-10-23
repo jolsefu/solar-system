@@ -83,6 +83,9 @@ export function trackPlanet(planetId) {
   if (trackingAnimation) {
     gsap.ticker.remove(trackingAnimation);
     trackingAnimation = null;
+
+    const planet_button = document.querySelector("#planet-toggle");
+    planet_button.style.display = "none";
   }
 
   const planetEl = document.querySelector(`#${planetId}`);
@@ -123,6 +126,11 @@ export function trackPlanet(planetId) {
       duration: 0.1,
       ease: "none",
     });
+
+    // Show "Go To [ Planet ]" button
+    const planet_button = document.querySelector("#planet-toggle");
+    planet_button.style.display = "block";
+    planet_button.innerHTML = `Go to ${planetId.charAt(0).toUpperCase() + planetId.slice(1)}`;
   }
 
   // Use GSAP ticker to update every frame
@@ -141,6 +149,9 @@ export function stopTrackingPlanet() {
   if (trackingAnimation) {
     gsap.ticker.remove(trackingAnimation);
     trackingAnimation = null;
+
+    const planet_button = document.querySelector("#planet-toggle");
+    planet_button.style.display = "none";
   }
 
   trackingPlanet = null;
