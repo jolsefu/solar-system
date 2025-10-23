@@ -116,6 +116,7 @@ export function trackPlanet(planetId) {
       ease: "none",
     });
 
+    // Look directly down at the planet's position
     const pitch = -90;
     gsap.to(cameraEl.components["look-controls"].pitchObject.rotation, {
       x: (Math.PI / 180) * pitch,
@@ -129,6 +130,14 @@ export function trackPlanet(planetId) {
 }
 
 export function stopTrackingPlanet() {
+  /**
+   *
+   * For stoping the function to track a planet
+   * after clicking another camera preset or
+   * planet button.
+   *
+   */
+
   if (trackingAnimation) {
     gsap.ticker.remove(trackingAnimation);
     trackingAnimation = null;

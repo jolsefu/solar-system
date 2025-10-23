@@ -19,6 +19,7 @@ function start() {
   addListeners();
   addCameraListeners();
   addPlanetListeners();
+  addPresetListeners();
 }
 
 function addListeners() {
@@ -44,6 +45,13 @@ function addListeners() {
 }
 
 function addCameraListeners() {
+  /**
+   *
+   * Listeners for every camera preset inside
+   * the sidebar menu.
+   *
+   */
+
   document.querySelectorAll(".view-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const viewName = btn.dataset.view;
@@ -62,6 +70,13 @@ function addCameraListeners() {
 }
 
 function addPlanetListeners() {
+  /**
+   *
+   * Listeners for each planet's button inside
+   * the sidebar menu.
+   *
+   */
+
   // Planets dropdown
   const planetsBtn = document.querySelector("#planets-dropdown-btn");
   const planetsDropdown = document.querySelector("#planets-dropdown");
@@ -70,23 +85,31 @@ function addPlanetListeners() {
     planetsDropdown.classList.toggle("open");
   });
 
+  // Planet button handlers
+  document.querySelectorAll(".planet-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const planet = btn.dataset.planet;
+
+      // Start tracking the selected planet
+      view.trackPlanet(planet);
+    });
+  });
+}
+
+function addPresetListeners() {
+  /**
+   *
+   * Listeners for each button inside
+   * the camera presets section of the sidebar.
+   *
+   */
+
   // Views dropdown
   const viewsBtn = document.querySelector("#views-dropdown-btn");
   const viewsDropdown = document.querySelector("#views-dropdown");
 
   viewsBtn.addEventListener("click", () => {
     viewsDropdown.classList.toggle("open");
-  });
-
-  // Planet button handlers
-  document.querySelectorAll(".planet-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const planet = btn.dataset.planet;
-      console.log(`Navigate to planet: ${planet}`);
-
-      // Start tracking the selected planet
-      view.trackPlanet(planet);
-    });
   });
 }
 
