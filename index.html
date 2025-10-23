@@ -82,8 +82,9 @@
         </button>
         <div class="dropdown-content" id="views-dropdown">
           <button class="nes-btn is-success view-btn" data-view="default">Default</button>
-          <button class="nes-btn is-success view-btn" data-view="sideview">Side View</button>
-          <button class="nes-btn is-success view-btn" data-view="topview">Top View</button>
+          <button class="nes-btn is-success view-btn" data-view="side">Side View</button>
+          <button class="nes-btn is-success view-btn" data-view="top">Top View</button>
+          <button class="nes-btn is-success view-btn" data-view="diagonal">Diagonal View</button>
         </div>
       </div>
     </div>
@@ -105,6 +106,7 @@
       <a-entity id="rig" position="0 0 0">
         <a-camera
           id="camera"
+          position="0 0 0"
         >
           <a-cursor></a-cursor>
         </a-camera>

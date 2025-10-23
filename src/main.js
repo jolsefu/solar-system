@@ -20,6 +20,7 @@ function start() {
   addCameraListeners();
   addPlanetListeners();
   addPresetListeners();
+  enableCameraDebug();
 }
 
 function addListeners() {
@@ -58,13 +59,7 @@ function addCameraListeners() {
 
       view.stopTrackingPlanet();
 
-      if (viewName === "default") {
-        view.animateCameraToDefault();
-      } else if (viewName === "sideview") {
-        view.animateCameraToSideView();
-      } else if (viewName === "topview") {
-        view.animateCameraToTopView();
-      }
+      view.animateCameraTo(viewName);
     });
   });
 }
@@ -140,6 +135,62 @@ function beginDefaultState() {
   sidebarToggle.classList.toggle("sidebar-open");
 }
 
+/**
+ *
+ * Debug Functions
+ *
+ */
+
+function enableCameraDebug() {
+  /**
+   *
+   * Enable debug mode that prints camera position and rotation
+   * whenever the camera moves
+   *
+   */
+
+  const cameraEl = document.querySelector("#camera");
+
+  // Wait for camera to be loaded
+  cameraEl.addEventListener("loaded", () => {
+    const camera = cameraEl.object3D;
+    const lookControls = cameraEl.components["look-controls"];
+
+    let lastPosition = { x: 0, y: 0, z: 0 };
+    let lastRotation = { pitch: 0, yaw: 0 };
+
+    // Check camera state every frame
+    setInterval(() => {
+      const currentPos = camera.position;
+      const pitchRad = lookControls.pitchObject.rotation.x;
+      const yawRad = lookControls.yawObject.rotation.y;
+
+      // Convert radians to degrees
+      const pitch = pitchRad * (180 / Math.PI);
+      const yaw = yawRad * (180 / Math.PI);
+
+      // Check if position or rotation changed (with small threshold to avoid noise)
+      const posChanged =
+        Math.abs(currentPos.x - lastPosition.x) > 0.01 ||
+        Math.abs(currentPos.y - lastPosition.y) > 0.01 ||
+        Math.abs(currentPos.z - lastPosition.z) > 0.01;
+
+      const rotChanged =
+        Math.abs(pitch - lastRotation.pitch) > 0.1 ||
+        Math.abs(yaw - lastRotation.yaw) > 0.1;
+
+      if (posChanged || rotChanged) {
+        console.log("Camera Debug:");
+        console.log(`  Position: x=${currentPos.x.toFixed(2)}, y=${currentPos.y.toFixed(2)}, z=${currentPos.z.toFixed(2)}\n  Rotation: pitch=${pitch.toFixed(2)}°, yaw=${yaw.toFixed(2)}°`);
+        console.log("---");
+
+        // Update last known values
+        lastPosition = { x: currentPos.x, y: currentPos.y, z: currentPos.z };
+        lastRotation = { pitch, yaw };
+      }
+    }, 100); // Check every 100ms
+  });
+}
 
 // Make a planet clickable
 // AFRAME.registerComponent("clickable", {

@@ -56,16 +56,9 @@ function animateCamera(camera, preset) {
   });
 }
 
-export function animateCameraToDefault() {
-  animateCamera(camera, presets.default);
-}
-
-export function animateCameraToSideView() {
-  animateCamera(camera, presets.sideview);
-}
-
-export function animateCameraToTopView() {
-  animateCamera(camera, presets.topview);
+export function animateCameraTo(preset_name) {
+  const preset = presets[preset_name];
+  animateCamera(camera, preset);
 }
 
 let trackingPlanet = null;
