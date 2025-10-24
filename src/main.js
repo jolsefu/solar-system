@@ -108,6 +108,9 @@ function addPlanetListeners() {
   });
 }
 
+// Global variable to track current planet
+let currentPlanet = null;
+
 function addPlanetToggleListener() {
   /**
    *
@@ -117,7 +120,6 @@ function addPlanetToggleListener() {
    */
 
   const planetToggle = document.querySelector("#planet-toggle");
-  let currentPlanet = null;
 
   // Update currentPlanet when a planet button is clicked
   document.querySelectorAll(".planet-btn").forEach((btn) => {
@@ -175,6 +177,9 @@ function restorePlanetState() {
   const trackingPlanet = localStorage.getItem('trackingPlanet');
 
   if (trackingPlanet) {
+    // Restore the currentPlanet variable
+    currentPlanet = trackingPlanet;
+    
     // Hide main menu and show sidebar
     const main_menu = document.querySelector(".main-menu");
     const sidebar = document.querySelector("#sidebar");
