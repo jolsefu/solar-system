@@ -22,6 +22,7 @@ function start() {
   addPresetListeners();
   addPlanetToggleListener();
   enableCameraDebug();
+  restorePlanetState();
 }
 
 function addListeners() {
@@ -129,6 +130,9 @@ function addPlanetToggleListener() {
 
   planetToggle.addEventListener("click", () => {
     if (currentPlanet) {
+      // Save the current planet state before navigating
+      localStorage.setItem('trackingPlanet', currentPlanet);
+
       // Navigate to the planet's environment page
       window.location.href = `/planets/${currentPlanet}.html`;
     }
@@ -160,6 +164,42 @@ function beginDefaultState() {
 
   sidebarToggle.style.display = "flex";
   sidebarToggle.classList.toggle("sidebar-open");
+}
+
+function restorePlanetState() {
+  /**
+   *
+   * Restore the planet tracking state when returning
+   * from a planet environment page
+   *
+   */
+
+  const trackingPlanet = localStorage.getItem('trackingPlanet');
+
+  if (trackingPlanet) {
+    // Hide main menu and show sidebar
+    const main_menu = document.querySelector(".main-menu");
+    const sidebar = document.querySelector("#sidebar");
+    const sidebarToggle = document.querySelector("#sidebar-toggle");
+
+    main_menu.style.display = "none";
+    sidebar.classList.add("open");
+    sidebarToggle.style.display = "flex";
+    sidebarToggle.classList.add("sidebar-open");
+
+    // Wait for A-Frame scene to be loaded
+    const scene = document.querySelector('a-scene');
+    if (scene.hasLoaded) {
+      view.trackPlanet(trackingPlanet);
+    } else {
+      scene.addEventListener('loaded', () => {
+      view.trackPlanet(trackingPlanet);
+      });
+    }
+
+    // Clear the stored state
+    localStorage.removeItem('trackingPlanet');
+  }
 }
 
 /**
