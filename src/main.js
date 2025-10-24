@@ -179,7 +179,7 @@ function restorePlanetState() {
   if (trackingPlanet) {
     // Restore the currentPlanet variable
     currentPlanet = trackingPlanet;
-    
+
     // Hide main menu and show sidebar
     const main_menu = document.querySelector(".main-menu");
     const sidebar = document.querySelector("#sidebar");
