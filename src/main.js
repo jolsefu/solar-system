@@ -12,6 +12,14 @@ function start() {
    *
    * Code to run after DOM has been loaded.
    * - addListeners(): Add listeners for each button of the UI.
+   * - addCameraListeners(): Add listeners for each button inside the
+   * camera preset view dropdown.
+   * - addPlanetListeners(): Add listeners for each planet button in
+   * the dropdown.
+   * - addPlanetToggleListener(): Add listener for each "Go to [ Planet ]" button.
+   * - enableCameraDebug(): For debugging the camera's position and rotation.
+   * - restorePlanetState(): For restoring the previous state after clicking the
+   * "Back to Solar System" button.
    *
    */
 
@@ -19,7 +27,6 @@ function start() {
   addListeners();
   addCameraListeners();
   addPlanetListeners();
-  addPresetListeners();
   addPlanetToggleListener();
   enableCameraDebug();
   restorePlanetState();
@@ -54,6 +61,14 @@ function addCameraListeners() {
    * the sidebar menu.
    *
    */
+
+  // Views dropdown
+  const viewsBtn = document.querySelector("#views-dropdown-btn");
+  const viewsDropdown = document.querySelector("#views-dropdown");
+
+  viewsBtn.addEventListener("click", () => {
+    viewsDropdown.classList.toggle("open");
+  });
 
   document.querySelectorAll(".view-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -90,23 +105,6 @@ function addPlanetListeners() {
       // Start tracking the selected planet
       view.trackPlanet(planet);
     });
-  });
-}
-
-function addPresetListeners() {
-  /**
-   *
-   * Listeners for each button inside
-   * the camera presets section of the sidebar.
-   *
-   */
-
-  // Views dropdown
-  const viewsBtn = document.querySelector("#views-dropdown-btn");
-  const viewsDropdown = document.querySelector("#views-dropdown");
-
-  viewsBtn.addEventListener("click", () => {
-    viewsDropdown.classList.toggle("open");
   });
 }
 
