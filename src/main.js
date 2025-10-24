@@ -20,6 +20,7 @@ function start() {
   addCameraListeners();
   addPlanetListeners();
   addPresetListeners();
+  addPlanetToggleListener();
   enableCameraDebug();
 }
 
@@ -105,6 +106,32 @@ function addPresetListeners() {
 
   viewsBtn.addEventListener("click", () => {
     viewsDropdown.classList.toggle("open");
+  });
+}
+
+function addPlanetToggleListener() {
+  /**
+   *
+   * Listener for the "Go to [Planet]" button that appears
+   * when tracking a planet
+   *
+   */
+
+  const planetToggle = document.querySelector("#planet-toggle");
+  let currentPlanet = null;
+
+  // Update currentPlanet when a planet button is clicked
+  document.querySelectorAll(".planet-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentPlanet = btn.dataset.planet;
+    });
+  });
+
+  planetToggle.addEventListener("click", () => {
+    if (currentPlanet) {
+      // Navigate to the planet's environment page
+      window.location.href = `/planets/${currentPlanet}.html`;
+    }
   });
 }
 
