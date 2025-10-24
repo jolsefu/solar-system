@@ -200,7 +200,24 @@
              loop: true;
              dur: 5000;
              easing: linear;"
-        ></a-sphere>
+        >
+          <!-- MOON orbiting Earth -->
+          <a-entity
+            id="moon-orbit"
+            animation="property: rotation;
+               to: 0 360 0;
+               loop: true;
+               dur: 3000;
+               easing: linear;"
+          >
+            <a-sphere
+              id="moon"
+              color="#aaa"
+              position="3 0 0"
+              radius="0.4"
+            ></a-sphere>
+          </a-entity>
+        </a-sphere>
       </a-entity>
 
       <!-- MARS -->
@@ -223,7 +240,41 @@
              loop: true;
              dur: 10000;
              easing: linear;"
-        ></a-sphere>
+        >
+          <!-- PHOBOS (larger, closer moon) -->
+          <a-entity
+            id="phobos-orbit"
+            animation="property: rotation;
+               to: 0 360 0;
+               loop: true;
+               dur: 2000;
+               easing: linear;"
+          >
+            <a-sphere
+              id="phobos"
+              color="#998877"
+              position="1.8 0 0"
+              radius="0.15"
+            ></a-sphere>
+          </a-entity>
+
+          <!-- DEIMOS (smaller, farther moon) -->
+          <a-entity
+            id="deimos-orbit"
+            animation="property: rotation;
+               to: 0 360 0;
+               loop: true;
+               dur: 3500;
+               easing: linear;"
+          >
+            <a-sphere
+              id="deimos"
+              color="#887766"
+              position="2.5 0 0"
+              radius="0.1"
+            ></a-sphere>
+          </a-entity>
+        </a-sphere>
       </a-entity>
 
       <!-- JUPITER -->
@@ -269,7 +320,18 @@
              loop: true;
              dur: 5000;
              easing: linear;"
-        ></a-sphere>
+        >
+          <!-- SATURN'S RINGS -->
+          <a-torus
+            id="saturn-ring"
+            color="#c9a876"
+            position="0 0 0"
+            rotation="90 0 0"
+            radius="5"
+            radius-tubular="0.1"
+            material="opacity: 0.7; transparent: true; side: double;"
+          ></a-torus>
+        </a-sphere>
       </a-entity>
 
       <!-- URANUS -->
