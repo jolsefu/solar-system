@@ -113,8 +113,8 @@
       </a-entity>
       <!-- </a-entity> -->
 
-      <!-- AMBIENT LIGHT -->
-      <a-entity light="type: ambient; color: #fff; intensity: 5;"></a-entity>
+      <!-- AMBIENT LIGHT - Very low to simulate space darkness -->
+      <a-entity light="type: ambient; color: #222; intensity: 10;"></a-entity>
 
       <!-- SUN -->
       <a-sphere
@@ -123,12 +123,16 @@
         position="0 1.25 -5"
         radius="3"
         rotation="0 0 0"
+        material="shader: flat; emissive: #ffaa00; emissiveIntensity: 1;"
         animation="property: rotation;
            to: 0 360 0;
            loop: true;
            dur: 10000;
            easing: linear;"
-      ></a-sphere>
+      >
+        <!-- Point light emanating from the sun -->
+        <a-entity light="type: point; color: #fff; intensity: 50; distance: 100; decay: 1;"></a-entity>
+      </a-sphere>
 
       <!-- MERCURY -->
       <a-entity
