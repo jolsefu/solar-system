@@ -24,7 +24,9 @@
     <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
 
-    <!-- Grabbed from: https://github.com/handeyeco/aframe-star-system-component -->
+    <!--
+      https://github.com/handeyeco/aframe-star-system-component
+    -->
 
     <!--
      Changed new THREE.Geometry() to use modern new THREE.BufferGeometry()
@@ -38,6 +40,17 @@
      New: for (let i = 0; i < count; i++)
     -->
     <script src="../aframe-star-system-component/index.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-atoll-terrain
+    -->
+    <!-- <script src="https://unpkg.com/aframe-atoll-terrain@^1.0.0/dist/aframe-atoll-terrain.js"></script> -->
+    <script src="../aframe-atoll-terrain/aframe-atoll-terrain.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-simple-sun-sky
+    -->
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.3/simple-sun-sky.js"></script>
   </head>
   <body>
     <!-- Back Button -->
@@ -55,15 +68,44 @@
     </div>
 
     <a-scene>
-      <a-sky color="black"></a-sky>
-      <a-entity star-system></a-entity>
-
       <!-- Camera -->
       <a-entity id="rig" position="0 1.6 0">
         <a-camera wasd-controls look-controls>
           <a-cursor></a-cursor>
         </a-camera>
       </a-entity>
+
+      <!-- Fog -->
+      <a-scene fog="type: linear; color: #AAA"></a-scene>
+
+      <!-- Sun -->
+      <a-simple-sun-sky
+        sun-position="0.7 0.4 -1"
+        light-color="#000000"
+        dark-color="#000000"
+        fog-color="#000000"
+        radius="10000"
+      ></a-simple-sun-sky>
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="0.7 0.4 -1"></a-entity>
+
+      <!-- Sky  -->
+      <!-- <a-sky color="black"></a-sky> -->
+      <a-entity star-system="radius: 400;"></a-entity>
+
+      <!-- Terrain  -->
+      <a-atoll-terrain
+        plateau-radius="50"
+        plateau-elevation="1"
+        middle-radius="400"
+        unit-size="4"
+        far="10000"
+        land-yin-color="#528d04"
+        land-yang-color="#278d53"
+        sea-yin-color="#005e85"
+        sea-yang-color="#2571cf"
+      >
+      </a-atoll-terrain>
     </a-scene>
   </body>
 </html>
