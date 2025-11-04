@@ -23,11 +23,30 @@
 
     <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <!-- Grabbed from: https://github.com/handeyeco/aframe-star-system-component -->
+
+    <!--
+     Changed new THREE.Geometry() to use modern new THREE.BufferGeometry()
+
+     Array Structure
+     Old: stars.vertices.push(vector)
+     New: positions[] setAttribute('position', new THREE.Float32BufferAttribute(...))
+
+     Loop Structure
+     Old: while (stars.vertices.length < count)
+     New: for (let i = 0; i < count; i++)
+    -->
+    <script src="../aframe-star-system-component/index.js"></script>
   </head>
   <body>
     <!-- Back Button -->
-    <button id="back-btn" class="nes-btn is-primary" onclick="window.location.href='/'">
-        Back to Solar System
+    <button
+      id="back-btn"
+      class="nes-btn is-primary"
+      onclick="window.location.href='/'"
+    >
+      Back to Solar System
     </button>
 
     <div class="planet-info">
@@ -36,6 +55,9 @@
     </div>
 
     <a-scene>
+      <a-sky color="black"></a-sky>
+      <a-entity star-system></a-entity>
+
       <!-- Camera -->
       <a-entity id="rig" position="0 1.6 0">
         <a-camera wasd-controls look-controls>
