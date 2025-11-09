@@ -9,6 +9,9 @@
 *  texture     <Asset>:  sprite used for individual stars
 */
 
+// Import AFRAME for ES module usage
+import AFRAME from 'aframe';
+
 AFRAME.registerComponent('star-system', {
   schema: {
     color: {
