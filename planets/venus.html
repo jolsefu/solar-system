@@ -23,6 +23,35 @@
 
     <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <!--
+      https://github.com/handeyeco/aframe-star-system-component
+    -->
+
+    <!--
+     Changed new THREE.Geometry() to use modern new THREE.BufferGeometry()
+
+     Array Structure
+     Old: stars.vertices.push(vector)
+     New: positions[] setAttribute('position', new THREE.Float32BufferAttribute(...))
+
+     Loop Structure
+     Old: while (stars.vertices.length < count)
+     New: for (let i = 0; i < count; i++)
+    -->
+    <script src="../aframe-star-system-component/bare_index.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-atoll-terrain
+    -->
+    <script src="https://unpkg.com/aframe-atoll-terrain@^1.0.0/dist/aframe-atoll-terrain.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-simple-sun-sky
+    -->
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.3/simple-sun-sky.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fern-solutions/aframe-fix-fog/dist/fix-fog.umd.min.js"></script>
   </head>
   <body>
     <!-- Back Button -->
@@ -37,42 +66,43 @@
 
     <a-scene>
       <!-- Camera -->
-      <a-entity id="rig" position="0 1.6 0">
+      <a-entity id="rig" position="0 5 0">
         <a-camera wasd-controls look-controls>
           <a-cursor></a-cursor>
         </a-camera>
       </a-entity>
 
-      <!-- Ambient light (dim due to thick atmosphere) -->
-      <a-entity light="type: ambient; color: #FF9933; intensity: 0.4;"></a-entity>
+      <!-- Fog - thick yellowish atmosphere -->
+    <a-scene fog="type: exponential; color: #E8A020; density: 5"></a-scene>
 
-      <!-- Directional light (filtered through atmosphere) -->
-      <a-entity light="type: directional; color: #FFAA44; intensity: 0.8;" position="5 10 2"></a-entity>
+      <!-- Sun - heavily obscured by atmosphere -->
+      <a-simple-sun-sky
+        sun-position="0.7 0.4 -1"
+        light-color="#FFB347"
+        dark-color="#CC7722"
+        fog-color="#E8A020"
+        radius="10000"
+      ></a-simple-sun-sky>
+      <a-entity light="type: ambient; color: #FFB347"></a-entity>
+      <a-entity light="type: directional; color: #FFCC66; intensity: 0.5" position="0.7 0.4 -1"></a-entity>
 
-      <!-- Venus surface (large sphere with texture) -->
-      <a-sphere
-        src="/src/textures/venus.jpeg"
-        position="0 -50 0"
-        radius="50"
-        rotation="0 0 0"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 60000; easing: linear;">
-      </a-sphere>
+      <!-- Sky - thick atmosphere blocks most stars -->
+      <a-entity star-system="radius: 400; count: 1000;"></a-entity>
 
-      <!-- Ground plane for walking -->
-      <a-plane
-        position="0 0 0"
-        rotation="-90 0 0"
-        width="100"
-        height="100"
-        color="#CC8844"
-        roughness="0.9">
-      </a-plane>
-
-      <!-- Volcanic rocks/features -->
-      <a-sphere position="5 0.5 -5" radius="0.5" color="#8B4513"></a-sphere>
-      <a-sphere position="-3 0.3 -7" radius="0.3" color="#A0522D"></a-sphere>
-      <a-sphere position="8 0.4 -10" radius="0.4" color="#654321"></a-sphere>
-      <a-sphere position="-6 0.6 -4" radius="0.6" color="#8B7355"></a-sphere>
+      <!-- Terrain - volcanic Venus surface -->
+      <a-atoll-terrain
+        plateau-radius="50"
+        plateau-elevation="5"
+        elevation-bias="10"
+        middle-radius="400"
+        unit-size="4"
+        far="10000"
+        land-yin-color="#CC8844"
+        land-yang-color="#E09A55"
+        sea-yin-color="#CC8844"
+        sea-yang-color="#E09A55"
+      >
+      </a-atoll-terrain>
     </a-scene>
   </body>
 </html>
