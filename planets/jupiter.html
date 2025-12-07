@@ -23,6 +23,16 @@
 
     <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <!--
+      https://github.com/handeyeco/aframe-star-system-component
+    -->
+    <script src="../aframe-star-system-component/bare_index.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-simple-sun-sky
+    -->
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.3/simple-sun-sky.js"></script>
   </head>
   <body>
     <!-- Back Button -->
@@ -36,43 +46,29 @@
     </div>
 
     <a-scene>
-      <!-- Camera -->
-      <a-entity id="rig" position="0 1.6 0">
-        <a-camera wasd-controls-enabled="false" look-controls>
+      <!-- Camera - floating in atmosphere -->
+      <a-entity id="rig" position="0 10 0">
+        <a-camera wasd-controls look-controls>
           <a-cursor></a-cursor>
         </a-camera>
       </a-entity>
 
-      <!-- Ambient light (stormy atmosphere) -->
-      <a-entity light="type: ambient; color: #DDA15E; intensity: 0.6;"></a-entity>
+      <!-- Very thick fog - dense gas atmosphere -->
+      <a-scene fog="type: linear; color: #D4A373; near: 5; far: 50"></a-scene>
 
-      <!-- Directional light -->
-      <a-entity light="type: directional; color: #FFCC99; intensity: 1;" position="5 10 2"></a-entity>
+      <!-- Distant sun through thick atmosphere -->
+      <a-simple-sun-sky
+        sun-position="0.7 0.4 -1"
+        light-color="#FFCC99"
+        dark-color="#8B6F47"
+        fog-color="#D4A373"
+        radius="10000"
+      ></a-simple-sun-sky>
+      <a-entity light="type: ambient; color: #DDA15E; intensity: 0.4"></a-entity>
+      <a-entity light="type: directional; color: #FFCC99; intensity: 0.3" position="0.7 0.4 -1"></a-entity>
 
-      <!-- Jupiter surface (large sphere with texture) -->
-      <a-sphere
-        src="/src/textures/jupiter.jpeg"
-        position="0 -50 0"
-        radius="50"
-        rotation="0 0 0"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 60000; easing: linear;">
-      </a-sphere>
-
-      <!-- Ground plane (swirling clouds effect) -->
-      <a-plane
-        position="0 0 0"
-        rotation="-90 0 0"
-        width="100"
-        height="100"
-        color="#D4A373"
-        roughness="0.7">
-      </a-plane>
-
-      <!-- Cloud formations/features -->
-      <a-sphere position="5 0.5 -5" radius="0.5" color="#C9A961"></a-sphere>
-      <a-sphere position="-3 0.3 -7" radius="0.3" color="#E0C097"></a-sphere>
-      <a-sphere position="8 0.4 -10" radius="0.4" color="#B8936D"></a-sphere>
-      <a-sphere position="-6 0.6 -4" radius="0.6" color="#CDB08A"></a-sphere>
+      <!-- Minimal stars - thick atmosphere blocks most -->
+      <a-entity star-system="radius: 500; count: 500;"></a-entity>
     </a-scene>
   </body>
 </html>
