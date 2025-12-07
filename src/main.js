@@ -91,13 +91,6 @@ function addCameraListeners() {
   });
 }
 
-function beginMainMusic() {
-  // Background music setup
-  const bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
-  bgMusic.loop = true;
-  bgMusic.volume = MUSIC_VOLUME;
-}
-
 function addPlanetListeners() {
   /**
    *
