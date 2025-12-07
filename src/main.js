@@ -2,7 +2,7 @@ import "aframe";
 import "../aframe-star-system-component/index.js";
 import * as view from "./view.js";
 
-
+const MUSIC_VOLUME = 0.1;
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -43,7 +43,16 @@ function addListeners() {
 
   // Start button
   const start_btn = document.querySelector("#start-btn");
-  start_btn.addEventListener("click", beginDefaultState);
+
+  // Background music setup
+  const bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
+  bgMusic.loop = true;
+  bgMusic.volume = MUSIC_VOLUME;
+
+  start_btn.addEventListener("click", (e) => {
+    bgMusic.play();
+    beginDefaultState(e);
+  });
 
   // Sidebar toggle
   const sidebar = document.querySelector("#sidebar");
@@ -80,6 +89,13 @@ function addCameraListeners() {
       view.animateCameraTo(viewName);
     });
   });
+}
+
+function beginMainMusic() {
+  // Background music setup
+  const bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
+  bgMusic.loop = true;
+  bgMusic.volume = MUSIC_VOLUME;
 }
 
 function addPlanetListeners() {
