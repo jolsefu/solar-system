@@ -23,6 +23,16 @@
 
     <!-- AFrame -->
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <!--
+      https://github.com/handeyeco/aframe-star-system-component
+    -->
+    <script src="../aframe-star-system-component/bare_index.js"></script>
+
+    <!--
+      https://github.com/DougReeder/aframe-simple-sun-sky
+    -->
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.3/simple-sun-sky.js"></script>
   </head>
   <body>
     <!-- Back Button -->
@@ -36,43 +46,29 @@
     </div>
 
     <a-scene>
-      <!-- Camera -->
-      <a-entity id="rig" position="0 1.6 0">
-        <a-camera wasd-controls-enabled="false" look-controls>
+      <!-- Camera - floating in ice giant atmosphere -->
+      <a-entity id="rig" position="0 10 0">
+        <a-camera wasd-controls look-controls>
           <a-cursor></a-cursor>
         </a-camera>
       </a-entity>
 
-      <!-- Ambient light (cyan tint) -->
-      <a-entity light="type: ambient; color: #7FC8D9; intensity: 0.5;"></a-entity>
+      <!-- Thick fog - cyan/blue-green icy atmosphere -->
+      <a-scene fog="type: linear; color: #7FC8D9; near: 5; far: 50"></a-scene>
 
-      <!-- Directional light (filtered through icy atmosphere) -->
-      <a-entity light="type: directional; color: #A0D9E8; intensity: 0.9;" position="5 10 2"></a-entity>
+      <!-- Very distant cold sun through thick atmosphere -->
+      <a-simple-sun-sky
+        sun-position="0.7 0.4 -1"
+        light-color="#B3E5F0"
+        dark-color="#4A8A99"
+        fog-color="#7FC8D9"
+        radius="10000"
+      ></a-simple-sun-sky>
+      <a-entity light="type: ambient; color: #8FD4E3; intensity: 0.35"></a-entity>
+      <a-entity light="type: directional; color: #A0D9E8; intensity: 0.25" position="0.7 0.4 -1"></a-entity>
 
-      <!-- Uranus surface (large sphere with texture) -->
-      <a-sphere
-        src="/src/textures/uranus.jpeg"
-        position="0 -50 0"
-        radius="50"
-        rotation="0 0 0"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 60000; easing: linear;">
-      </a-sphere>
-
-      <!-- Ground plane (icy surface) -->
-      <a-plane
-        position="0 0 0"
-        rotation="-90 0 0"
-        width="100"
-        height="100"
-        color="#6FB8C8"
-        roughness="0.6">
-      </a-plane>
-
-      <!-- Ice formations -->
-      <a-sphere position="5 0.5 -5" radius="0.5" color="#5FA5B5"></a-sphere>
-      <a-sphere position="-3 0.3 -7" radius="0.3" color="#87C5D5"></a-sphere>
-      <a-sphere position="8 0.4 -10" radius="0.4" color="#4F95A5"></a-sphere>
-      <a-sphere position="-6 0.6 -4" radius="0.6" color="#75B3C3"></a-sphere>
+      <!-- Fewer stars - thick ice giant atmosphere, very distant from sun -->
+      <a-entity star-system="radius: 500; count: 400;"></a-entity>
     </a-scene>
   </body>
 </html>
