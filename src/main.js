@@ -4,6 +4,18 @@ import * as view from "./view.js";
 
 const MUSIC_VOLUME = 0.1;
 
+// Global background music instance (initialized later)
+let bgMusic = null;
+
+function initMusic() {
+  if (!bgMusic) {
+    bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
+    bgMusic.loop = true;
+    bgMusic.volume = MUSIC_VOLUME;
+  }
+  return bgMusic;
+}
+
 document.addEventListener("DOMContentLoaded", start);
 
 
@@ -29,7 +41,7 @@ function start() {
   addCameraListeners();
   addPlanetListeners();
   addPlanetToggleListener();
-  enableCameraDebug();
+  // enableCameraDebug();
   restorePlanetState();
 }
 
@@ -44,13 +56,11 @@ function addListeners() {
   // Start button
   const start_btn = document.querySelector("#start-btn");
 
-  // Background music setup
-  const bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
-  bgMusic.loop = true;
-  bgMusic.volume = MUSIC_VOLUME;
-
   start_btn.addEventListener("click", (e) => {
-    bgMusic.play();
+    const music = initMusic();
+    music.play().catch(err => console.log('Autoplay prevented:', err));
+    // Mark that user has approved audio playback
+    localStorage.setItem('musicApproved', 'true');
     beginDefaultState(e);
   });
 
@@ -187,6 +197,18 @@ function restorePlanetState() {
   const trackingPlanet = localStorage.getItem('trackingPlanet');
 
   if (trackingPlanet) {
+    // Resume background music when returning to solar system
+    // Only if user has previously approved audio
+    if (localStorage.getItem('musicApproved') === 'true') {
+      const music = initMusic();
+      // Add a small delay to ensure page is fully interactive
+      setTimeout(() => {
+        music.play().catch(err => {
+          // Silently handle autoplay restrictions
+        });
+      }, 100);
+    }
+
     // Restore the currentPlanet variable
     currentPlanet = trackingPlanet;
 
