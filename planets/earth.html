@@ -35,8 +35,28 @@
 
     <div class="planet-info">
       <h1>Earth</h1>
-      <p>Our home planet, the only known world with liquid water and life.</p>
+      <p>Earth is our home, and the only known world in the universe to support life, boasting vast oceans of liquid water on its surface. It stands out in our neighborhood for a cultural reason as well: It is the only planet in the solar system that is not named after a Greek or Roman god or goddess.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Earth.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera -->

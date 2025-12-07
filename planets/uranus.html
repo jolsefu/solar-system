@@ -42,8 +42,28 @@
 
     <div class="planet-info">
       <h1>Uranus</h1>
-      <p>An ice giant that rotates on its side, with a blue-green atmosphere.</p>
+      <p>Uranus is an ice giant with a pale blue-green color caused by methane in its freezing atmosphere. It has the most unusual orientation in the solar system: Its axis is tilted 98 degrees, meaning it essentially rolls around the Sun on its side like a ball rather than spinning like a top.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Uranus.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera - floating in ice giant atmosphere -->

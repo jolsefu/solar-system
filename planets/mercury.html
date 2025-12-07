@@ -63,8 +63,28 @@
 
     <div class="planet-info">
       <h1>Mercury</h1>
-      <p>The smallest planet in our solar system and closest to the Sun.</p>
+      <p>Mercury is the smallest planet and sits closest to the Sun, appearing as a rocky, cratered world much like our Moon. Despite its proximity to solar heat, it isn't actually the hottest planet because it has almost no atmosphere to trap warmth. Its nighttime temperatures can plummet to a freezing minus 290 degrees Fahrenheit.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Mercury.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera -->

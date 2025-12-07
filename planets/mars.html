@@ -59,8 +59,28 @@
 
     <div class="planet-info">
       <h1>Mars</h1>
-      <p>The Red Planet with the largest volcano and canyon in the solar system.</p>
+      <p>Mars, known as the Red Planet, gets its signature color from iron oxide—rust—covering its cold, dusty surface. While we are used to red and orange sunsets on Earth, Mars offers a different spectacle: Due to the way its fine dust scatters light, sunsets on Mars appear distinctly blue.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Mars.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera -->

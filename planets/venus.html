@@ -61,8 +61,28 @@
 
     <div class="planet-info">
       <h1>Venus</h1>
-      <p>The hottest planet in our solar system with a thick, toxic atmosphere.</p>
+      <p>Venus is often called Earth's evil twin due to its similar size, but it is a scorching environment wrapped in thick, toxic clouds. Uniquely, Venus spins backward compared to most other planets, and it rotates so slowly that a single day on Venus actually lasts longer than a Venusian year.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Venus.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera -->

@@ -42,8 +42,28 @@
 
     <div class="planet-info">
       <h1>Jupiter</h1>
-      <p>The largest planet in our solar system, a gas giant with the Great Red Spot.</p>
+      <p>Jupiter is the undisputed king of the solar system, a massive gas giant famous for its colorful stripes and the Great Red Spot. It is truly gigantic; you could fit all the other planets in the solar system inside Jupiter and still have plenty of room to spare.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Jupiter.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera - floating in atmosphere -->

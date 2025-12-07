@@ -42,8 +42,28 @@
 
     <div class="planet-info">
       <h1>Saturn</h1>
-      <p>Famous for its spectacular ring system, the second largest planet.</p>
+      <p>Saturn is instantly recognizable by its spectacular, complex ring system made of ice and rock. Despite its size, this gas giant is composed mostly of light gases like hydrogen and helium, making it the least dense planet. If you could build a bathtub big enough, Saturn would actually float in water.</p>
+      <button id="play-voiceover" class="nes-btn is-success">▶ Play Voiceover</button>
     </div>
+
+    <script>
+      const voiceoverBtn = document.getElementById('play-voiceover');
+      const voiceover = new Audio('/src/audio/Saturn.mp3');
+
+      voiceoverBtn.addEventListener('click', () => {
+        if (voiceover.paused) {
+          voiceover.play();
+          voiceoverBtn.textContent = '⏸ Pause Voiceover';
+        } else {
+          voiceover.pause();
+          voiceoverBtn.textContent = '▶ Play Voiceover';
+        }
+      });
+
+      voiceover.addEventListener('ended', () => {
+        voiceoverBtn.textContent = '▶ Play Voiceover';
+      });
+    </script>
 
     <a-scene>
       <!-- Camera - floating in atmosphere -->
