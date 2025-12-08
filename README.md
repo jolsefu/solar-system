@@ -65,9 +65,10 @@ Unlike traditional planetarium software or static educational websites, our Sola
 - Planet voiceover narrations (MP3 format)
 
 ### Asset Management
-- Planetary textures (JPEG format)
+- Planetary textures (JPEG format) - stored in `/public/textures/`
 - Night sky textures for space background
-- Audio files stored in `/src/audio`
+- Audio files stored in `/public/audio/`
+- Assets in `public/` folder are served at root URL in production (Vite convention)
 
 ## Setup Instructions
 
@@ -119,22 +120,32 @@ solar-system/
 │   ├── saturn.html
 │   ├── uranus.html
 │   └── neptune.html
+├── public/                    # Static assets
+│   ├── audio/                 # Background music & voiceovers
+│   └── textures/              # Planet and sky textures
 ├── src/
-│   ├── main.js               # Main JavaScript entry point
-│   ├── view.js               # Camera control and planet tracking
-│   ├── audio/                # Background music & voiceovers
-│   ├── styles/               # CSS files
-│   │   ├── main.css
-│   │   ├── sidebar.css
-│   │   ├── planet-toggle.css
-│   │   └── planet-environment.css
-│   └── textures/             # Planet and sky textures
+│   ├── main.js                # Main JavaScript entry point
+│   ├── view.js                # Camera control and planet tracking
+│   └── styles/                # CSS files
+│       ├── main.css
+│       ├── sidebar.css
+│       ├── planet-toggle.css
+│       └── planet-environment.css
 ├── aframe-star-system-component/  # Custom star field component
 ├── package.json
 └── vite.config.js
 ```
 
 ### Development Notes
+
+#### Static Assets
+- All static assets (textures, audio) are stored in the `public/` folder
+- Vite serves files from `public/` at the root URL: `public/textures/sun.jpeg` → `/textures/sun.jpeg`
+
+#### Multi-Page Build Configuration
+- Vite config includes all planet HTML pages as separate entry points
+- Each planet page is built as an independent HTML file
+- Maintains `/planets/` folder structure in production build
 
 #### Modified Libraries
 - **aframe-star-system-component**: Converted from global to ES module, replaced deprecated `THREE.Geometry` with `BufferGeometry`
@@ -146,8 +157,17 @@ solar-system/
 - VR headset support via WebXR (experimental)
 
 #### Known Issues
-- Background music autoplay may be blocked by browser policies when returning from planet pages
+- Background music autoplay may be blocked by browser policies when returning from planet pages (handled gracefully)
 - Performance may vary on older devices with complex planet environments
+
+### Deployment Notes
+
+#### Vercel Deployment
+This project is configured for seamless Vercel deployment:
+
+1. **Static Assets**: Assets in `public/` folder are automatically served
+2. **Multi-page App**: All planet pages are included in the build via `vite.config.js`
+3. **SPA Routing**: No special routing configuration needed - each page is a separate HTML file
 
 ## Educational Value
 
