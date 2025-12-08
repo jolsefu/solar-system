@@ -2,7 +2,7 @@
 
 An immersive journey through our solar system, bringing space exploration to your browser through interactive 3D environments and educational content.
 
-## 📖 Project Story
+## Project Story
 
 This project was born from a vision to make space education accessible and engaging for everyone. Traditional astronomy education often relies on static images and textbooks, creating a disconnect between learners and the cosmic wonders they're studying.
 
@@ -177,5 +177,3 @@ This project serves as both an educational tool and a technical demonstration of
 ## Creator
 
 **Jules Leo Reserva** - *Solo Developer & Creator*
-
----
