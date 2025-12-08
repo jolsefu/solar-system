@@ -9,7 +9,7 @@ let bgMusic = null;
 
 function initMusic() {
   if (!bgMusic) {
-    bgMusic = new Audio('/src/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
+    bgMusic = new Audio('/audio/Music Jon Gegelman - Outer Space Church on Space.aac');
     bgMusic.loop = true;
     bgMusic.volume = MUSIC_VOLUME;
   }
