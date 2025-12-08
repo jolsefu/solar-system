@@ -69,7 +69,7 @@ Unlike traditional planetarium software or static educational websites, our Sola
 - Night sky textures for space background
 - Audio files stored in `/src/audio`
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - **Node.js** (v16 or higher recommended)
