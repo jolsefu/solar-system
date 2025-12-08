@@ -40,6 +40,11 @@
         Back to Solar System
     </button>
 
+    <!-- Planet Info Toggle Button -->
+    <button id="planet-info-toggle" class="nes-btn is-primary planet-info-toggle">
+      ℹ
+    </button>
+
     <div class="planet-info">
       <h1>Jupiter</h1>
       <p>Jupiter is the undisputed king of the solar system, a massive gas giant famous for its colorful stripes and the Great Red Spot. It is truly gigantic; you could fit all the other planets in the solar system inside Jupiter and still have plenty of room to spare.</p>
@@ -47,6 +52,16 @@
     </div>
 
     <script>
+      // Planet info toggle
+      const planetInfo = document.querySelector('.planet-info');
+      const planetInfoToggle = document.getElementById('planet-info-toggle');
+
+      planetInfoToggle.addEventListener('click', () => {
+        planetInfo.classList.toggle('open');
+        planetInfoToggle.classList.toggle('info-open');
+      });
+
+      // Voiceover functionality
       const voiceoverBtn = document.getElementById('play-voiceover');
       const voiceover = new Audio('/src/audio/Jupiter.mp3');
 
@@ -63,9 +78,7 @@
       voiceover.addEventListener('ended', () => {
         voiceoverBtn.textContent = '▶ Play Voiceover';
       });
-    </script>
-
-    <a-scene>
+    </script>    <a-scene>
       <!-- Camera - floating in atmosphere -->
       <a-entity id="rig" position="0 10 0">
         <a-camera wasd-controls look-controls>

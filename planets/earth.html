@@ -33,6 +33,11 @@
         Back to Solar System
     </button>
 
+    <!-- Planet Info Toggle Button -->
+    <button id="planet-info-toggle" class="nes-btn is-primary planet-info-toggle">
+      ℹ
+    </button>
+
     <div class="planet-info">
       <h1>Earth</h1>
       <p>Earth is our home, and the only known world in the universe to support life, boasting vast oceans of liquid water on its surface. It stands out in our neighborhood for a cultural reason as well: It is the only planet in the solar system that is not named after a Greek or Roman god or goddess.</p>
@@ -40,6 +45,16 @@
     </div>
 
     <script>
+      // Planet info toggle
+      const planetInfo = document.querySelector('.planet-info');
+      const planetInfoToggle = document.getElementById('planet-info-toggle');
+
+      planetInfoToggle.addEventListener('click', () => {
+        planetInfo.classList.toggle('open');
+        planetInfoToggle.classList.toggle('info-open');
+      });
+
+      // Voiceover functionality
       const voiceoverBtn = document.getElementById('play-voiceover');
       const voiceover = new Audio('/src/audio/Earth.mp3');
 
@@ -56,9 +71,7 @@
       voiceover.addEventListener('ended', () => {
         voiceoverBtn.textContent = '▶ Play Voiceover';
       });
-    </script>
-
-    <a-scene>
+    </script>    <a-scene>
       <!-- Camera -->
       <a-entity id="rig" position="0 1.6 0">
         <a-camera wasd-controls-enabled="false" look-controls>

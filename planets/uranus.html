@@ -40,6 +40,11 @@
         Back to Solar System
     </button>
 
+    <!-- Planet Info Toggle Button -->
+    <button id="planet-info-toggle" class="nes-btn is-primary planet-info-toggle">
+      ℹ
+    </button>
+
     <div class="planet-info">
       <h1>Uranus</h1>
       <p>Uranus is an ice giant with a pale blue-green color caused by methane in its freezing atmosphere. It has the most unusual orientation in the solar system: Its axis is tilted 98 degrees, meaning it essentially rolls around the Sun on its side like a ball rather than spinning like a top.</p>
@@ -47,6 +52,16 @@
     </div>
 
     <script>
+      // Planet info toggle
+      const planetInfo = document.querySelector('.planet-info');
+      const planetInfoToggle = document.getElementById('planet-info-toggle');
+
+      planetInfoToggle.addEventListener('click', () => {
+        planetInfo.classList.toggle('open');
+        planetInfoToggle.classList.toggle('info-open');
+      });
+
+      // Voiceover functionality
       const voiceoverBtn = document.getElementById('play-voiceover');
       const voiceover = new Audio('/src/audio/Uranus.mp3');
 
@@ -63,9 +78,7 @@
       voiceover.addEventListener('ended', () => {
         voiceoverBtn.textContent = '▶ Play Voiceover';
       });
-    </script>
-
-    <a-scene>
+    </script>    <a-scene>
       <!-- Camera - floating in ice giant atmosphere -->
       <a-entity id="rig" position="0 10 0">
         <a-camera wasd-controls look-controls>

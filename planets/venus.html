@@ -59,6 +59,11 @@
         Back to Solar System
     </button>
 
+    <!-- Planet Info Toggle Button -->
+    <button id="planet-info-toggle" class="nes-btn is-primary planet-info-toggle">
+      ℹ
+    </button>
+
     <div class="planet-info">
       <h1>Venus</h1>
       <p>Venus is often called Earth's evil twin due to its similar size, but it is a scorching environment wrapped in thick, toxic clouds. Uniquely, Venus spins backward compared to most other planets, and it rotates so slowly that a single day on Venus actually lasts longer than a Venusian year.</p>
@@ -66,6 +71,16 @@
     </div>
 
     <script>
+      // Planet info toggle
+      const planetInfo = document.querySelector('.planet-info');
+      const planetInfoToggle = document.getElementById('planet-info-toggle');
+
+      planetInfoToggle.addEventListener('click', () => {
+        planetInfo.classList.toggle('open');
+        planetInfoToggle.classList.toggle('info-open');
+      });
+
+      // Voiceover functionality
       const voiceoverBtn = document.getElementById('play-voiceover');
       const voiceover = new Audio('/src/audio/Venus.mp3');
 
@@ -82,9 +97,7 @@
       voiceover.addEventListener('ended', () => {
         voiceoverBtn.textContent = '▶ Play Voiceover';
       });
-    </script>
-
-    <a-scene>
+    </script>    <a-scene>
       <!-- Camera -->
       <a-entity id="rig" position="0 5 0">
         <a-camera wasd-controls-enabled="false" look-controls>

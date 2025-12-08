@@ -57,6 +57,11 @@
         Back to Solar System
     </button>
 
+    <!-- Planet Info Toggle Button -->
+    <button id="planet-info-toggle" class="nes-btn is-primary planet-info-toggle">
+      ℹ
+    </button>
+
     <div class="planet-info">
       <h1>Mars</h1>
       <p>Mars, known as the Red Planet, gets its signature color from iron oxide—rust—covering its cold, dusty surface. While we are used to red and orange sunsets on Earth, Mars offers a different spectacle: Due to the way its fine dust scatters light, sunsets on Mars appear distinctly blue.</p>
@@ -64,6 +69,16 @@
     </div>
 
     <script>
+      // Planet info toggle
+      const planetInfo = document.querySelector('.planet-info');
+      const planetInfoToggle = document.getElementById('planet-info-toggle');
+
+      planetInfoToggle.addEventListener('click', () => {
+        planetInfo.classList.toggle('open');
+        planetInfoToggle.classList.toggle('info-open');
+      });
+
+      // Voiceover functionality
       const voiceoverBtn = document.getElementById('play-voiceover');
       const voiceover = new Audio('/src/audio/Mars.mp3');
 
@@ -80,9 +95,7 @@
       voiceover.addEventListener('ended', () => {
         voiceoverBtn.textContent = '▶ Play Voiceover';
       });
-    </script>
-
-    <a-scene>
+    </script>    <a-scene>
       <!-- Camera -->
       <a-entity id="rig" position="0 5 0">
         <a-camera wasd-controls-enabled="false" look-controls>
