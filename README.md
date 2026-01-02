@@ -2,6 +2,43 @@
 
 An immersive journey through our solar system, bringing space exploration to your browser through interactive 3D environments and educational content.
 
+## Setup Instructions
+
+### Prerequisites
+- **Node.js** (v16 or higher recommended)
+- **npm** (comes with Node.js)
+- Modern web browser with WebGL support (Chrome, Firefox, Safari, Edge)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/jolsefu/solar-system.git
+   cd solar-system
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173` (or another port if 5173 is in use)
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+   Production files will be generated in the `dist/` directory
+
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
 ## Project Story
 
 This project was born from a vision to make space education accessible and engaging for everyone. Traditional astronomy education often relies on static images and textbooks, creating a disconnect between learners and the cosmic wonders they're studying.
@@ -70,42 +107,6 @@ Unlike traditional planetarium software or static educational websites, our Sola
 - Audio files stored in `/public/audio/`
 - Assets in `public/` folder are served at root URL in production (Vite convention)
 
-## Setup Instructions
-
-### Prerequisites
-- **Node.js** (v16 or higher recommended)
-- **npm** (comes with Node.js)
-- Modern web browser with WebGL support (Chrome, Firefox, Safari, Edge)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/jolsefu/solar-system.git
-   cd solar-system
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   The application will be available at `http://localhost:5173` (or another port if 5173 is in use)
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-   Production files will be generated in the `dist/` directory
-
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
 
 ### Project Structure
 ```
