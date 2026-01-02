@@ -94,7 +94,7 @@ Unlike traditional planetarium software or static educational websites, our Sola
 
 ## Acknowledgments
 
-- Background music: "Outer Space Church on Space" by Jon Gegelman
+- **Background music**: "Outer Space Church on Space" by Jon Gegelman
 - **NASA**: Planetary texture maps and reference materials
 - **A-Frame Community**: Excellent VR framework and ecosystem
 - **Component Authors**:
