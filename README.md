@@ -4,7 +4,7 @@ An immersive journey through our solar system, bringing space exploration to you
 
 ## Creator
 
-**Jules Leo Reserva** - *Solo Developer & Creator*
+**Jules Leo Reserva** - *Solo Developer*
 
 ## Setup Instructions
 
@@ -31,17 +31,6 @@ An immersive journey through our solar system, bringing space exploration to you
    npm run dev
    ```
    The application will be available at `http://localhost:5173` (or another port if 5173 is in use)
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-   Production files will be generated in the `dist/` directory
-
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
 
 ## Project Story
 
