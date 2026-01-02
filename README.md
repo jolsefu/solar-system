@@ -38,7 +38,7 @@ This project was born from a vision to make space education accessible and engag
 
 **The Problem:** Space is vast, three-dimensional, and dynamic—but most educational materials present it in flat, lifeless formats. Students struggle to grasp planetary scales, orbital mechanics, and the unique characteristics of each celestial body.
 
-**Our Solution:** A fully interactive 3D solar system that you can explore from any device with a web browser. No expensive equipment, no downloads—just point, click, and start your journey through space.
+**The Solution:** A fully interactive 3D solar system that you can explore from any device with a web browser. No expensive equipment, no downloads—just point, click, and start your journey through space.
 
 ### Project Vision
 
@@ -54,7 +54,6 @@ Unlike traditional planetarium software or static educational websites, our Sola
 - Provides **planet-specific environments** where you can "stand" on Mercury's cratered surface, float through Jupiter's gaseous atmosphere, or experience Venus's thick toxic clouds
 - Combines **accurate astronomical data** with artistic interpretation to create both educational and beautiful experiences
 - Features **voice narration** for each planet, making it accessible to visual and audio learners
-- Uses modern web technologies (WebVR/WebXR) to work on desktops, mobile devices, and VR headsets
 
 ## Concept & Features
 
@@ -91,96 +90,11 @@ Unlike traditional planetarium software or static educational websites, our Sola
 - **aframe-fix-fog**: Fog rendering fixes for better atmospheric effects
 
 ### Audio
-- Background music: "Outer Space Church on Space" by Jon Gegelman
 - Planet voiceover narrations (MP3 format)
-
-### Asset Management
-- Planetary textures (JPEG format) - stored in `/public/textures/`
-- Night sky textures for space background
-- Audio files stored in `/public/audio/`
-- Assets in `public/` folder are served at root URL in production (Vite convention)
-
-
-### Project Structure
-```
-solar-system/
-├── index.html                 # Main solar system view
-├── planets/                   # Individual planet environment pages
-│   ├── mercury.html
-│   ├── venus.html
-│   ├── earth.html
-│   ├── mars.html
-│   ├── jupiter.html
-│   ├── saturn.html
-│   ├── uranus.html
-│   └── neptune.html
-├── public/                    # Static assets
-│   ├── audio/                 # Background music & voiceovers
-│   └── textures/              # Planet and sky textures
-├── src/
-│   ├── main.js                # Main JavaScript entry point
-│   ├── view.js                # Camera control and planet tracking
-│   └── styles/                # CSS files
-│       ├── main.css
-│       ├── sidebar.css
-│       ├── planet-toggle.css
-│       └── planet-environment.css
-├── aframe-star-system-component/  # Custom star field component
-├── package.json
-└── vite.config.js
-```
-
-### Development Notes
-
-#### Static Assets
-- All static assets (textures, audio) are stored in the `public/` folder
-- Vite serves files from `public/` at the root URL: `public/textures/sun.jpeg` → `/textures/sun.jpeg`
-
-#### Multi-Page Build Configuration
-- Vite config includes all planet HTML pages as separate entry points
-- Each planet page is built as an independent HTML file
-- Maintains `/planets/` folder structure in production build
-
-#### Modified Libraries
-- **aframe-star-system-component**: Converted from global to ES module, replaced deprecated `THREE.Geometry` with `BufferGeometry`
-- **a-starry-sky**: Fixed `THREE.DataTexture3D` → `THREE.Data3DTexture` deprecation (12 instances)
-
-#### Browser Compatibility
-- Best experienced on desktop browsers with WebGL 2.0 support
-- Mobile devices supported but may have performance limitations
-- VR headset support via WebXR (experimental)
-
-#### Known Issues
-- Background music autoplay may be blocked by browser policies when returning from planet pages (handled gracefully)
-- Performance may vary on older devices with complex planet environments
-
-### Deployment Notes
-
-#### Vercel Deployment
-This project is configured for seamless Vercel deployment:
-
-1. **Static Assets**: Assets in `public/` folder are automatically served
-2. **Multi-page App**: All planet pages are included in the build via `vite.config.js`
-3. **SPA Routing**: No special routing configuration needed - each page is a separate HTML file
-
-## Educational Value
-
-This project serves as both an educational tool and a technical demonstration of:
-- Modern web technologies (WebVR, WebGL, ES modules)
-- 3D graphics programming with Three.js/A-Frame
-- Procedural generation techniques
-- User experience design for immersive applications
-- Browser-based VR development
-- Audio-visual integration for enhanced learning
-
-### Learning Outcomes for Users:
-- Understanding planetary characteristics and differences
-- Visualizing orbital mechanics and planetary scales
-- Experiencing simulated planetary environments
-- Learning through multi-sensory engagement (visual, audio, interactive)
 
 ## Acknowledgments
 
+- Background music: "Outer Space Church on Space" by Jon Gegelman
 - **NASA**: Planetary texture maps and reference materials
 - **A-Frame Community**: Excellent VR framework and ecosystem
 - **Component Authors**:
