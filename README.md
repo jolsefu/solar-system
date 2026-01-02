@@ -2,6 +2,10 @@
 
 An immersive journey through our solar system, bringing space exploration to your browser through interactive 3D environments and educational content.
 
+## Creator
+
+**Jules Leo Reserva** - *Solo Developer & Creator*
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -194,7 +198,3 @@ This project serves as both an educational tool and a technical demonstration of
   - Doug Reeder (aframe-atoll-terrain, aframe-simple-sun-sky)
   - handeyeco (aframe-star-system-component)
 - **Educational Resources**: Various astronomy resources for accurate planetary descriptions
-
-## Creator
-
-**Jules Leo Reserva** - *Solo Developer & Creator*
