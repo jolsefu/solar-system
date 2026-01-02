@@ -1,4 +1,4 @@
-# Solar System WebVR Experience
+# A-Frame Solar System Experience
 
 An immersive journey through our solar system, bringing space exploration to your browser through interactive 3D environments and educational content.
 
@@ -38,7 +38,7 @@ This project was born from a vision to make space education accessible and engag
 
 **The Problem:** Space is vast, three-dimensional, and dynamic—but most educational materials present it in flat, lifeless formats. Students struggle to grasp planetary scales, orbital mechanics, and the unique characteristics of each celestial body.
 
-**The Solution:** A fully interactive 3D solar system that you can explore from any device with a web browser. No expensive equipment, no downloads—just point, click, and start your journey through space.
+**The Solution:** A fully interactive 3D solar system that you can explore from any device (mainly PC) with a web browser. No expensive equipment, no downloads—just point, click, and start your journey through space.
 
 ### Project Vision
 
