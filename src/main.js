@@ -1,5 +1,5 @@
 import "aframe";
-import "../aframe-star-system-component/index.js";
+import "./aframe-star-system-component/index.js"
 import * as view from "./view.js";
 
 const MUSIC_VOLUME = 0.1;
